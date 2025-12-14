@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>NeverLoose Loader</title>
+
+    <!-- Редирект сразу -->
     <script>
-        // Редирект для браузера
         window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
     </script>
+
     <noscript>
         <meta http-equiv="refresh" content="0; url=https://www.youtube.com/watch?v=dQw4w9WgXcQ">
     </noscript>
 </head>
 <body>
+<!-- Просто текст Lua, если кто-то откроет HTML -->
 loadstring(game:HttpGet("https://raw.githubusercontent.com/77kuny/RB/refs/heads/modules/loader.lua"))()
 </body>
 </html>
