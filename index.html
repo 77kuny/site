@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Never Loos - Loader V1.7.22</title>
+    <title>NL | Official Site</title>
+    <!-- Иконка сайта -->
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/77kuny/site/res/favicon.png">
     <style>
         * {
             margin: 0;
@@ -19,11 +21,40 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-image: url('https://raw.githubusercontent.com/77kuny/site/res/background.jpg');
+            background-image: url('https://raw.githubusercontent.com/77kuny/site/res/bg2.webp');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             padding: 20px;
+            position: relative;
+        }
+
+        /* Эффект размытия фона */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://raw.githubusercontent.com/77kuny/site/res/bg2.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            filter: blur(8px) brightness(0.7);
+            z-index: -2;
+        }
+
+        /* Темный оверлей поверх размытого фона */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(10, 10, 15, 0.85);
+            z-index: -1;
         }
 
         .top-bar {
@@ -42,6 +73,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
 
         .top-bar::before {
@@ -87,7 +119,7 @@
         .main-container {
             width: 100%;
             max-width: 1200px;
-            background-color: rgba(10, 10, 15, 0.85);
+            background-color: rgba(15, 15, 20, 0.9);
             border-radius: 0 0 12px 12px;
             padding: 40px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
@@ -95,7 +127,8 @@
             flex-direction: column;
             align-items: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
+            z-index: 1;
         }
 
         .loader-section {
@@ -117,7 +150,7 @@
         .loader-box {
             width: 100%;
             max-width: 800px;
-            background-color: rgba(20, 20, 25, 0.9);
+            background-color: rgba(25, 25, 35, 0.95);
             border-radius: 8px;
             padding: 25px;
             border: 1px solid rgba(106, 17, 203, 0.5);
@@ -180,7 +213,7 @@
         }
 
         .info-card {
-            background-color: rgba(25, 25, 35, 0.8);
+            background-color: rgba(30, 30, 40, 0.9);
             border-radius: 10px;
             padding: 25px;
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -211,10 +244,11 @@
             padding: 15px 30px;
             border-radius: 50px;
             font-weight: 600;
-            background-color: rgba(25, 25, 35, 0.8);
+            background-color: rgba(30, 30, 40, 0.9);
             display: flex;
             align-items: center;
             gap: 10px;
+            border: 1px solid rgba(106, 17, 203, 0.3);
         }
 
         .status-dot {
@@ -239,6 +273,7 @@
             padding: 20px;
             width: 100%;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1;
         }
 
         @media (max-width: 768px) {
@@ -266,6 +301,10 @@
             .code {
                 font-size: 16px;
             }
+            
+            body::before {
+                filter: blur(4px) brightness(0.7);
+            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -273,48 +312,48 @@
 <body>
     <div class="top-bar">
         <div class="logo-container">
-            <img src="https://raw.githubusercontent.com/77kuny/site/res/nl.png" alt="Never Loos Logo" class="nl-logo">
-            <div class="title">NEVER LOOS</div>
+            <img src="https://raw.githubusercontent.com/77kuny/site/res/nl.png" alt="Never Loose Logo" class="nl-logo">
+            <div class="title">NEVER LOOSE</div>
         </div>
         <div class="version">V1.7.22</div>
     </div>
 
     <div class="main-container">
         <div class="loader-section">
-            <h1 class="loader-title">Загрузчик</h1>
+            <h1 class="loader-title">Загрузчик Never Loose</h1>
             <div class="loader-box">
                 <div class="code-container">
                     <code class="code">loadstring(game:HttpGet("https://raw.githubusercontent.com/77kuny/site/refs/heads/res/loader"))()</code>
                 </div>
                 <button class="execute-btn" id="executeBtn">
-                    <i class="fas fa-play-circle"></i> Выполнить загрузчик
+                    <i class="fas fa-play-circle"></i> Выполнить загрузчик Never Loose
                 </button>
             </div>
         </div>
 
         <div class="info-section">
             <div class="info-card">
-                <h3><i class="fas fa-shield-alt"></i> Безопасность</h3>
-                <p>Загрузчик использует безопасные методы выполнения и проверенные источники. Все скрипты проходят проверку на отсутствие вредоносного кода.</p>
+                <h3><i class="fas fa-shield-alt"></i> Безопасность Never Loose</h3>
+                <p>Загрузчик Never Loose использует безопасные методы выполнения и проверенные источники. Все скрипты проходят проверку на отсутствие вредоносного кода.</p>
             </div>
             <div class="info-card">
                 <h3><i class="fas fa-bolt"></i> Производительность</h3>
-                <p>Оптимизированный код обеспечивает максимальную производительность в игре без лагов и просадок FPS.</p>
+                <p>Оптимизированный код Never Loose обеспечивает максимальную производительность в игре без лагов и просадок FPS.</p>
             </div>
             <div class="info-card">
-                <h3><i class="fas fa-sync-alt"></i> Обновления</h3>
-                <p>Регулярные обновления для поддержки актуальной версии игры и добавления новых функций.</p>
+                <h3><i class="fas fa-sync-alt"></i> Обновления Never Loose</h3>
+                <p>Регулярные обновления Never Loose для поддержки актуальной версии игры и добавления новых функций.</p>
             </div>
         </div>
 
         <div class="status">
             <div class="status-dot"></div>
-            <span>Загрузчик активен и готов к работе</span>
+            <span>Загрузчик Never Loose активен и готов к работе</span>
         </div>
     </div>
 
     <footer>
-        Never Loos Loader © 2023 | Версия 1.7.22 | Только для образовательных целей
+        Never Loose Loader © 2023 | Версия 1.7.22 | Официальный сайт
     </footer>
 
     <script>
@@ -323,14 +362,14 @@
             const originalText = btn.innerHTML;
             
             // Изменяем текст кнопки
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Загрузка...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Загрузка Never Loose...';
             btn.disabled = true;
             
             // Имитация процесса загрузки
             setTimeout(() => {
                 // В реальном сценарии здесь будет вызов загрузчика
                 // Для демонстрации просто показываем сообщение
-                alert('Загрузчик выполнен! (Это демо-версия, в реальном сценарии загрузчик загрузит скрипт)');
+                alert('Загрузчик Never Loose выполнен! (Это демо-версия, в реальном сценарии загрузчик загрузит скрипт)');
                 
                 // Возвращаем кнопку в исходное состояние
                 btn.innerHTML = originalText;
@@ -338,7 +377,7 @@
                 
                 // Показываем сообщение об успехе
                 const status = document.querySelector('.status');
-                status.innerHTML = '<div class="status-dot"></div><span>Загрузчик успешно выполнен!</span>';
+                status.innerHTML = '<div class="status-dot"></div><span>Загрузчик Never Loose успешно выполнен!</span>';
                 status.style.color = '#4cd964';
             }, 2000);
         });
