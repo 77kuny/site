@@ -1,20 +1,347 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>NeverLoose Loader</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Never Loos - Loader V1.7.22</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    <!-- Редирект сразу -->
-    <script>
-        window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
-    </script>
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url('https://raw.githubusercontent.com/77kuny/site/res/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 20px;
+        }
 
-    <noscript>
-        <meta http-equiv="refresh" content="0; url=https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-    </noscript>
+        .top-bar {
+            width: 100%;
+            max-width: 1200px;
+            height: 80px;
+            background-image: url('https://raw.githubusercontent.com/77kuny/site/res/topbar.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .top-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, rgba(106, 17, 203, 0.3), rgba(37, 117, 252, 0.3));
+            z-index: 1;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 2;
+        }
+
+        .nl-logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #c33764, #1d2671);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(195, 55, 100, 0.5);
+            letter-spacing: 1px;
+        }
+
+        .version {
+            font-size: 18px;
+            color: #8a8a8a;
+            z-index: 2;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 1200px;
+            background-color: rgba(10, 10, 15, 0.85);
+            border-radius: 0 0 12px 12px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .loader-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .loader-title {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #f0f0f0;
+            text-shadow: 0 0 10px rgba(157, 78, 221, 0.7);
+        }
+
+        .loader-box {
+            width: 100%;
+            max-width: 800px;
+            background-color: rgba(20, 20, 25, 0.9);
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid rgba(106, 17, 203, 0.5);
+            box-shadow: 0 0 20px rgba(106, 17, 203, 0.3);
+        }
+
+        .code-container {
+            background-color: #1a1a2e;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 25px;
+            overflow-x: auto;
+            border-left: 4px solid #6a11cb;
+        }
+
+        .code {
+            color: #4cd964;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            white-space: nowrap;
+        }
+
+        .execute-btn {
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 20px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .execute-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.6);
+            background: linear-gradient(90deg, #2575fc, #6a11cb);
+        }
+
+        .execute-btn:active {
+            transform: translateY(1px);
+        }
+
+        .execute-btn i {
+            font-size: 22px;
+        }
+
+        .info-section {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background-color: rgba(25, 25, 35, 0.8);
+            border-radius: 10px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(106, 17, 203, 0.5);
+        }
+
+        .info-card h3 {
+            color: #6a11cb;
+            margin-bottom: 15px;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        .status {
+            margin-top: 30px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            background-color: rgba(25, 25, 35, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #4cd964;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            padding: 20px;
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                height: 70px;
+                padding: 0 20px;
+            }
+            
+            .title {
+                font-size: 22px;
+            }
+            
+            .version {
+                font-size: 16px;
+            }
+            
+            .main-container {
+                padding: 25px;
+            }
+            
+            .loader-title {
+                font-size: 26px;
+            }
+            
+            .code {
+                font-size: 16px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<!-- Просто текст Lua, если кто-то откроет HTML -->
-loadstring(game:HttpGet("https://raw.githubusercontent.com/77kuny/RB/refs/heads/modules/loader.lua"))()
+    <div class="top-bar">
+        <div class="logo-container">
+            <img src="https://raw.githubusercontent.com/77kuny/site/res/nl.png" alt="Never Loos Logo" class="nl-logo">
+            <div class="title">NEVER LOOS</div>
+        </div>
+        <div class="version">V1.7.22</div>
+    </div>
+
+    <div class="main-container">
+        <div class="loader-section">
+            <h1 class="loader-title">Загрузчик</h1>
+            <div class="loader-box">
+                <div class="code-container">
+                    <code class="code">loadstring(game:HttpGet("https://raw.githubusercontent.com/77kuny/site/refs/heads/res/loader"))()</code>
+                </div>
+                <button class="execute-btn" id="executeBtn">
+                    <i class="fas fa-play-circle"></i> Выполнить загрузчик
+                </button>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="info-card">
+                <h3><i class="fas fa-shield-alt"></i> Безопасность</h3>
+                <p>Загрузчик использует безопасные методы выполнения и проверенные источники. Все скрипты проходят проверку на отсутствие вредоносного кода.</p>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-bolt"></i> Производительность</h3>
+                <p>Оптимизированный код обеспечивает максимальную производительность в игре без лагов и просадок FPS.</p>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-sync-alt"></i> Обновления</h3>
+                <p>Регулярные обновления для поддержки актуальной версии игры и добавления новых функций.</p>
+            </div>
+        </div>
+
+        <div class="status">
+            <div class="status-dot"></div>
+            <span>Загрузчик активен и готов к работе</span>
+        </div>
+    </div>
+
+    <footer>
+        Never Loos Loader © 2023 | Версия 1.7.22 | Только для образовательных целей
+    </footer>
+
+    <script>
+        document.getElementById('executeBtn').addEventListener('click', function() {
+            const btn = this;
+            const originalText = btn.innerHTML;
+            
+            // Изменяем текст кнопки
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Загрузка...';
+            btn.disabled = true;
+            
+            // Имитация процесса загрузки
+            setTimeout(() => {
+                // В реальном сценарии здесь будет вызов загрузчика
+                // Для демонстрации просто показываем сообщение
+                alert('Загрузчик выполнен! (Это демо-версия, в реальном сценарии загрузчик загрузит скрипт)');
+                
+                // Возвращаем кнопку в исходное состояние
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                
+                // Показываем сообщение об успехе
+                const status = document.querySelector('.status');
+                status.innerHTML = '<div class="status-dot"></div><span>Загрузчик успешно выполнен!</span>';
+                status.style.color = '#4cd964';
+            }, 2000);
+        });
+    </script>
 </body>
 </html>
